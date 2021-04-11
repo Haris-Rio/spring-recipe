@@ -19,6 +19,9 @@ import com.springframework.recipe.repositories.CategoryRepository;
 import com.springframework.recipe.repositories.RecipeRepository;
 import com.springframework.recipe.repositories.UnitOfMeasureRepository;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Component
 public class RecipeBootStrap implements ApplicationListener<ContextRefreshedEvent>{
 
@@ -36,6 +39,7 @@ public class RecipeBootStrap implements ApplicationListener<ContextRefreshedEven
 
 	@Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
+		log.debug("Im in BootStrap Data Loader");
         recipeRepository.saveAll(getRecipes());
     }
 
